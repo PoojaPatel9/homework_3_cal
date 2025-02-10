@@ -1,56 +1,23 @@
-"""
-Test suite for the Calculator class and its operations.
-
-Contains tests to ensure the correct functionality of the 
-Calculator class, including basic arithmetic operations and error handling.
-"""
 import pytest
-from calculator.operations import Calculator
+from calculator.calculation import Calculation
+from calculator.operations import Operations
 
-@pytest.fixture
-def calc():
-    """Initialize the Calculator class."""
-    calculator = Calculator()
-    calculator.clear_history()  # Clear history before each test
-    return calculator
+def test_addition():
+    calc = Calculation(3, 2, Operations.add)
+    assert calc.result == 5
 
-@staticmethod
-def test_add(calc: Calculator):
-    """Test add function of the Calculator class."""
-    result = calc.add(1, 2)
-    assert result == 3
-    assert len(calc.retrieve_history()) == 1
+def test_subtraction():
+    calc = Calculation(5, 3, Operations.subtract)
+    assert calc.result == 2
 
-@staticmethod
-def test_subtract(calc: Calculator):
-    """Test subtract function of the Calculator class."""
-    result = calc.subtract(5, 3)
-    assert result == 2
-    assert len(calc.retrieve_history()) == 1
+def test_multiplication():
+    calc = Calculation(4, 3, Operations.multiply)
+    assert calc.result == 12
 
-@staticmethod
-def test_multiply(calc: Calculator):
-    """Test multiply function of the Calculator class."""
-    result = calc.multiply(2, 3)
-    assert result == 6
-    assert len(calc.retrieve_history()) == 1
+def test_division():
+    calc = Calculation(10, 2, Operations.divide)
+    assert calc.result == 5
 
-@staticmethod
-def test_divide(calc: Calculator):
-    """Test divide function of the Calculator class."""
-    result = calc.divide(6, 3)
-    assert result == 2
-    assert len(calc.retrieve_history()) == 1
-
-@staticmethod
-def test_divide_by_zero(calc: Calculator):
-    """Test division by zero in the Calculator class."""
+def test_division_by_zero():
     with pytest.raises(ZeroDivisionError):
-        calc.divide(1, 0)
-
-def test_retrieve_history(calc: Calculator):
-    """Test retrieving history from the Calculator class."""
-    calc.add(2, 3)
-    history = calc.retrieve_history()
-    assert len(history) == 1
-    assert history[0] == "Added: 2 + 3 = 5"
+        Calculation(10, 0, Operations.divide)
