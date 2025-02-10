@@ -1,11 +1,15 @@
+from calculator.operations import Operations
+
 class Calculation:
-    """Class to store a single calculation instance."""
-    
-    def __init__(self, operation: str, a: float, b: float, result: float):
-        self.operation = operation
+    """Represents a single calculation."""
+
+    def __init__(self, a: float, b: float, operation):
+        """Initialize calculation with two numbers and an operation function."""
         self.a = a
         self.b = b
-        self.result = result
+        self.operation = operation
+        self.result = self.perform_calculation()
 
-    def __str__(self):
-        return f"{self.a} {self.operation} {self.b} = {self.result}"
+    def perform_calculation(self) -> float:
+        """Executes the stored operation."""
+        return self.operation(self.a, self.b)
