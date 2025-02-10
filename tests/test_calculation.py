@@ -1,7 +1,7 @@
-""" 
+"""
 Test suite for the Calculator class and its operations.
 
-contains tests to ensure the correct functionality of the 
+Contains tests to ensure the correct functionality of the 
 Calculator class, including basic arithmetic operations and error handling.
 """
 import pytest
@@ -21,24 +21,28 @@ def test_add(calc: Calculator):
     assert result == 3
     assert len(calc.retrieve_history()) == 1
 
+@staticmethod
 def test_subtract(calc: Calculator):
     """Test subtract function of the Calculator class."""
     result = calc.subtract(5, 3)
     assert result == 2
     assert len(calc.retrieve_history()) == 1
 
+@staticmethod
 def test_multiply(calc: Calculator):
     """Test multiply function of the Calculator class."""
     result = calc.multiply(2, 3)
     assert result == 6
     assert len(calc.retrieve_history()) == 1
 
+@staticmethod
 def test_divide(calc: Calculator):
     """Test divide function of the Calculator class."""
     result = calc.divide(6, 3)
     assert result == 2
     assert len(calc.retrieve_history()) == 1
 
+@staticmethod
 def test_divide_by_zero(calc: Calculator):
     """Test division by zero in the Calculator class."""
     with pytest.raises(ZeroDivisionError):
