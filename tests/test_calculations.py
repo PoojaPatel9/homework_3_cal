@@ -50,6 +50,13 @@ def test_division_by_zero():
     with pytest.raises(ZeroDivisionError):
         Calculation(10, 0, Operations.divide)
 
+def test_empty_history(capsys):
+    """Test view_history() when history is empty."""
+    Calculations.history = []  # Ensure history is empty
+    Calculations.view_history()
+    captured = capsys.readouterr()
+    assert captured.out.strip() == "No history available."
+
 def test_history(capsys):
     """Test the calculation history functionality."""
     Calculations.history = []
