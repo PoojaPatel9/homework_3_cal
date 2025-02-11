@@ -20,16 +20,16 @@ report-full=no
 
 [DESIGN]
 # Maximum number of parents for a class (see R0901).
-max-parents=15
+max-parents=50
 
 # Maximum number of attributes for a class (see R0902).
-max-attributes=10
+max-attributes=50
 
 # Minimum number of public methods for a class (see R0903).
 min-public-methods=0
 
 # Maximum number of public methods for a class (see R0904).
-max-public-methods=20
+max-public-methods=50
 
 [BASIC]
 # Variable names can be 1 to 31 characters long
