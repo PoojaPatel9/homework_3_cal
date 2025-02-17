@@ -1,28 +1,27 @@
 import sys
-from calculator import Calculator
 from decimal import Decimal, InvalidOperation
+from calculator.operations import Operations
 
 def calculate_and_print(a, b, operation_name):
     operation_mappings = {
-        'add': Calculator.add,
-        'subtract': Calculator.subtract,
-        'multiply': Calculator.multiply,
-        'divide': Calculator.divide
+        'add': Operations.add,
+        'subtract': Operations.subtract,
+        'multiply': Operations.multiply,
+        'divide': Operations.divide
     }
 
-    # Unified error handling for decimal conversion
     try:
         a_float, b_float = map(float, [a, b])
-        result = operation_mappings.get(operation_name) # Use get to handle unknown operations
+        result = operation_mappings.get(operation_name)  # Use get to handle unknown operations
         if result:
             print(f"The result of {a} {operation_name} {b} is equal to {result(a_float, b_float)}")
         else:
             print(f"Unknown operation: {operation_name}")
-    except InvalidOperation:
+    except ValueError:  # Handle invalid number input
         print(f"Invalid number input: {a} or {b} is not a valid number.")
-    except ZeroDivisionError:
-        print("Error: Division by zero.")
-    except Exception as e: # Catch-all for unexpected errors
+    except ZeroDivisionError:  # Handle division by zero
+        print("An error occurred: Cannot divide by zero")
+    except Exception as e:  # Catch-all for unexpected errors
         print(f"An error occurred: {e}")
 
 def main():
@@ -35,4 +34,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
