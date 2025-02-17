@@ -13,14 +13,37 @@ from main import calculate_and_print  # Ensure this import matches your project 
     ("5", "b", 'subtract', "Invalid number input: 5 or b is not a valid number.")  # Testing another invalid number input
 ])
 
-
-
-def test_calculate_and_print(a_string, b_string, operation_string,expected_string, capsys):
+def test_calculate_and_print(a_string, b_string, operation_string, expected_string, capsys):
+    # Call the function under test
     calculate_and_print(a_string, b_string, operation_string)
+    
+    # Capture the printed output
     captured = capsys.readouterr()
+    
+    # Assert that the captured output matches the expected string
     assert captured.out.strip() == expected_string
 
 def test_operations(a, b, operation, expected):
-    from main import calculate_and_print
+    # Call the main calculation function
     calculate_and_print(a, b, operation)
+    # You can optionally add further checks here for logging or other outputs
+
+# Test cases to ensure 100% coverage
+def test_invalid_input(capsys):
+    # Test invalid number input
+    calculate_and_print("abc", "123", "add")
+    captured = capsys.readouterr()
+    assert captured.out.strip() == "Invalid number input: abc or 123 is not a valid number."
+
+def test_zero_division(capsys):
+    # Test divide by zero case
+    calculate_and_print("10", "0", "divide")
+    captured = capsys.readouterr()
+    assert captured.out.strip() == "An error occurred: Cannot divide by zero"
+
+def test_unknown_operation(capsys):
+    # Test for an unknown operation
+    calculate_and_print("5", "3", "modulo")
+    captured = capsys.readouterr()
+    assert captured.out.strip() == "Unknown operation: modulo"
     
