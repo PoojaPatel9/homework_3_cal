@@ -5,8 +5,10 @@
 
 
 import pytest
+
 from calculator.calculation import Calculation
 from calculator.operations import Operations
+
 
 def test_addition():
     """Test the addition operation of the Calculation class."""

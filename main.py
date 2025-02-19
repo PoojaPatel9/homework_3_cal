@@ -1,6 +1,8 @@
 import sys
 from decimal import Decimal, InvalidOperation
+
 from calculator.operations import Operations
+
 
 def calculate_and_print(a, b, operation_name):
     operation_mappings = {

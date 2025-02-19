@@ -5,9 +5,11 @@ This module contains unit tests to validate the functionality
 of the Calculations class and its methods.
 """
 import pytest
-from calculator.operations import Operations
+
 from calculator.calculation import Calculation
 from calculator.calculations import Calculations
+from calculator.operations import Operations
+
 
 def test_addition():
     """Test the addition operation."""

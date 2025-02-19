@@ -1,5 +1,7 @@
 from typing import List
+
 from calculator.calculation import Calculation
+
 
 class Calculations:
     """Manages the history of calculations."""

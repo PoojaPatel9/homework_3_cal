@@ -1,5 +1,6 @@
 from calculator.operations import Operations
 
+
 class Calculation:
     """Represents a single calculation."""
     
